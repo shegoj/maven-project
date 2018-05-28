@@ -1,0 +1,5 @@
+start Mongo DB with 
+	docker run -it -p 27017:27017 mongo
+
+start nodejs with 
+	nodejs main.js`
