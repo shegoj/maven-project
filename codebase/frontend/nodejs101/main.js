@@ -1,12 +1,12 @@
 // set up ======================================================================
 var express = require('express');
 var app = express(); 
-var port = 8010
+var port = 8080
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://mongo:27017/test');
 
 
 var db = mongoose.connection;
