@@ -1,0 +1,17 @@
+version: "2"
+services:
+  chatapp01:
+    #container_name: app01
+    restart: always
+    build: .
+    ports:
+      - "8081:8010"
+    links:
+      - mongo
+  mongo:
+    #container_name: mongo
+    image: mongo
+    volumes:
+      - ./.data:/data/db
+    ports:
+      - "27017:27017"
