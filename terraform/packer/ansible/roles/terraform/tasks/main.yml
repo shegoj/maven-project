@@ -1,0 +1,9 @@
+---
+ - name: install nginx server
+   action: yum name=wget state=installed 
+
+ - name: terraform install
+   unarchive:
+     src: https://releases.hashicorp.com/terraform/0.9.1/terraform_0.9.1_linux_amd64.zip
+     dest: /usr/bin
+     remote_src: True

@@ -1,0 +1,43 @@
+---  
+- name: This will setup a Jenkins CI Server
+  hosts: all
+  gather_facts: true
+  become: true
+  become_user: root
+  pre_tasks:
+    - include: apps.yml  
+  vars:
+    jenkins_version: 2.110
+    jenkins_plugins:
+     - build-pipeline-plugin 
+     - aws-java-sdk
+     - amazon-ecs
+     - build-timeout
+     - cloudbees-folder
+     - credentials-binding
+     - email-ext
+     - gitlab-plugin
+     - gradle
+     - ldap
+     - mailer
+     - matrix-auth
+     - pam-auth
+     - pipeline-stage-view
+     - ssh-slaves
+     - subversion
+     - timestamper
+     - workflow-aggregator
+     - github-organization-folder
+     - amazon-ec2-container-service
+     - github-authentication
+     - gitlab-authentication
+
+    jenkins_plugin_timeout: 500
+    jenkins_home: /var/lib/jenkins    
+
+  roles:
+    - geerlingguy.jenkins
+
+
+
+     

@@ -1,0 +1,50 @@
+{
+	"variables": {},
+	"builders": [
+		{
+			"type": "amazon-ebs",
+			"region": "eu-west-1",
+			"vpc_id": "vpc-5194b536",
+			"subnet_id": "subnet-b3f06ce8",
+			"security_group_id": "sg-d8ea94a2",
+			"source_ami": "ami-5178b028",
+			"instance_type": "t2.medium",
+			"ssh_username": "ubuntu",
+			"ami_name": "its-jenkins-ami-{{timestamp}}",
+			"ami_description": "ami designed by corighose",
+			"ssh_keypair_name": "jenkinskey",
+			"ami_users": ["943895596097", "040189630112"],
+			"ssh_private_key_file": "/Users/corighose/Documents/aws/jenkinskey.pem",
+			"tags": {
+				"Name": "its-jenkins.v2.110-v1.0",
+				"SourceAMI": "ami-5178b028"
+			}
+		}
+	],
+	"provisioners": [
+		{
+			"type": "shell",
+			"script": "files/apps1.sh"
+		},
+		{
+			"type": "ansible",
+			"playbook_file": "ansible/jenkins.yml",
+			"extra_arguments": [
+				"-u=root"
+			]
+		},
+		{
+			"type": "file",
+			"source": "files/ecs.config",
+			"destination": "/tmp/ecs.config"
+		},
+		{
+			"type": "shell",
+			"script": "files/file2.sh"
+		},
+		{
+			"type": "shell",
+			"script": "files/docker.config"
+		}
+	]
+}
