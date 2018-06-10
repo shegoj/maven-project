@@ -1,6 +1,0 @@
-#jenkins-server ansible_ssh_host=10.44.74.17 ansible_ssh_user=ubuntu
-
-
-
-
-
